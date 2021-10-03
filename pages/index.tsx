@@ -7,9 +7,12 @@ import styles from '../styles/Home.module.css'
 const Home: NextPage = () => {
   const [docId, setDocId] = useState('');
   const [extractedText, setExtractedText] = useState('');
+  const [videoTitle, setVideoTitle] = useState('');
   const [error, setError] = useState('');
   const submit = useCallback(async () => {
     setError('');
+    setExtractedText('');
+    setVideoTitle('');
     if (!docId) {
       setError('No DocId specified')
       return;
@@ -37,8 +40,9 @@ const Home: NextPage = () => {
       setError('Could not find any subtitles for specified media');
       return;
     }
-    const vtt = subtitledFile.subtitles.url;
+    setVideoTitle(media.title);
 
+    const vtt = subtitledFile.subtitles.url;
     let r: Response;
     let x: string;
     try {
@@ -70,12 +74,17 @@ const Home: NextPage = () => {
           <input type="text" value={docId} onChange={e => setDocId(e.target.value)} placeholder="DocID" />
           <button onClick={submit}>Submit</button>
         </div>
-        <div>
-          {error}
-        </div>
-        <div className={styles['text-area-container']}>
-          <textarea className={styles['text-area']} value={extractedText} readOnly />
-        </div>
+        {error && (
+          <div>
+            {error}
+          </div>
+        )}
+        {extractedText && (
+          <div className={styles['text-area-container']}>
+            {videoTitle && <h3>{videoTitle}</h3>}
+            <textarea className={styles['text-area']} value={extractedText} readOnly />
+          </div>
+        )}
       </main>
     </div>
   )
