@@ -13,6 +13,7 @@ const Home: NextPage = () => {
       setError('No DocId specified')
       return;
     }
+    
     let response: Response;
     let json: any;
 
@@ -71,8 +72,8 @@ const Home: NextPage = () => {
         <div>
           {error}
         </div>
-        <div>
-          <textarea value={extractedText} readOnly />
+        <div className={styles['text-area-container']}>
+          <textarea className={styles['text-area']} value={extractedText} readOnly />
         </div>
       </main>
     </div>

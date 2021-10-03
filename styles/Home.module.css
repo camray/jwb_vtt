@@ -119,3 +119,12 @@
     flex-direction: column;
   }
 }
+
+.text-area {
+  width: 100%;
+  height: 300px;
+}
+
+.text-area-container {
+  width: 100%;
+}
