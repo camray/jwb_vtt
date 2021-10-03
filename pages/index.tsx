@@ -9,6 +9,7 @@ const Home: NextPage = () => {
   const [extractedText, setExtractedText] = useState('');
   const [error, setError] = useState('');
   const submit = useCallback(async () => {
+    setError('');
     if (!docId) {
       setError('No DocId specified')
       return;
