@@ -30,7 +30,7 @@ const Home: NextPage = () => {
     }
 
     const media = json.media[0];
-    const subtitledFile = media.files.find(f => f.subtitles !== undefined);
+    const subtitledFile = media.files.find((f: any) => f.subtitles !== undefined);
     if (!subtitledFile) {
       setError('Could not find any subtitles for specified media');
       return;
