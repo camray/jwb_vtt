@@ -72,7 +72,7 @@ const Home: NextPage = () => {
 
         <div>
           <input type="text" value={docId} onChange={e => setDocId(e.target.value)} placeholder="DocID" />
-          <button onClick={submit}>Submit</button>
+          <button onClick={submit}>Extract</button>
         </div>
         {error && (
           <div>
